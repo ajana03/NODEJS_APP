@@ -1,15 +1,13 @@
 import "./App.css";
 // import { createBrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import SignIn from "./pages/SignIn";
+import Body from "./components/Body";
 
 function App() {
   return (
-    <div className="App text-white">
+    <div className="App text-white bg-black ">
       <Navbar />
-      <div className="container m-auto flex flex-grow sm:mb-[50] sm:max-w-[450]">
-        <SignIn />
-      </div>
+      <Body />
     </div>
   );
 }
