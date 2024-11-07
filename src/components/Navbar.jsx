@@ -1,49 +1,80 @@
 import { useState } from "react";
-// import { Link } from "react-router-dom";
-import { BACKGRD_IMG } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import { signOut } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { LOGO, USER_ICON } from "../utils/constants";
+
+import BgImg from "./BgImg";
 
 const Navbar = () => {
   const [isLoginclick, setIsLoginClick] = useState(false);
+  const navigate = useNavigate();
+  const user = useSelector((store) => store.user);
 
-  console.log(isLoginclick);
+  const userName =
+    user?.displayName !== null
+      ? user?.displayName[0]?.toUpperCase() + user?.displayName?.substring(1)
+      : "Default";
+
   const handleLoginClick = () => {
-    setIsLoginClick((cl) => true);
+    setIsLoginClick(true);
+    navigate("/login");
+  };
+
+  const handleLogoutClick = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        setIsLoginClick(false);
+        // navigate("/");
+      })
+      .catch((error) => {
+        // An error happened.
+        navigate("/error");
+      });
   };
 
   return (
-    <div>
-      <div className="invisible sm:visible sm:bg-cover sm:bg-gradient-to-b from-black sm:absolute sm:overflow-hidden sm:block sm:h-lvh sm:min-h-lvh sm:w-full sm:-z-1 ">
-        <img
-          src={BACKGRD_IMG}
-          alt="background-image"
-          className="sm:min-h-full sm:min-w-full "
-        />
-      </div>
-      <header>
-        <header className="flex justify-between w-full absolute sm:px-14 sm:py-6 bg-gradient-to-b from-black">
-          <div className=" ml-10 ">
-            <a href="/" className="">
+    <header>
+      <BgImg />
+      <header className="flex justify-between p-2 items-center w-full sm:absolute sm:px-14 sm:py-6 bg-gradient-to-b from-black">
+        <div className="">
+          <a href="/" className="">
+            <img className="w-44" src={LOGO} alt="Logo_netflix" />
+          </a>
+        </div>
+        <div className="">
+          {!isLoginclick && !user && (
+            <button
+              // to="/login"
+              onClick={handleLoginClick}
+              className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline"
+            >
+              Sign In
+            </button>
+          )}
+          {user && (
+            <div className="flex justify-around items-center cursor-pointer">
               <img
-                className="w-44"
-                src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-                alt="Logo_netflix"
+                src={USER_ICON}
+                alt="user_img"
+                className="w-11 h-11 rounded m-2"
               />
-            </a>
-          </div>
-          <div>
-            {!isLoginclick && (
-              <a
-                href="/login"
-                onClick={handleLoginClick}
-                className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline"
+              <span>{userName}</span>
+
+              <button
+                onClick={handleLogoutClick}
+                className="bg-red-700 hover:bg-red-800 text-white font-bold m-2 py-2 px-2 rounded focus:outline-none focus:shadow-outline"
               >
-                Sign In
-              </a>
-            )}
-          </div>
-        </header>
+                Sign Out
+              </button>
+            </div>
+          )}
+        </div>
       </header>
-    </div>
+    </header>
   );
 };
 
