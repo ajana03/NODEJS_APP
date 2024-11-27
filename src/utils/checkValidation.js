@@ -9,3 +9,7 @@ export const checkValidation = (email, password) => {
 
   return null;
 };
+
+// export const checkApiKeyValidator=(key)=>{
+//   if(!key)
+// }

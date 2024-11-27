@@ -4,10 +4,9 @@ import useMovieTrailer from "../hooks/useMovieTrailer";
 const VideoBg = ({ movieId }) => {
   useMovieTrailer(movieId);
   const trailerVideo = useSelector((store) => store.movies.trailerVideo);
-  // console.log("trailervideod", trailerVideo);
 
   const youtubeUrl = `https://www.youtube.com/embed/${trailerVideo?.key}?&autoplay=1&mute=1`;
-  // console.log(youtubeUrl);
+
   return (
     <div className="overflow-x-hidden">
       <iframe

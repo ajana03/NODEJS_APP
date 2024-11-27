@@ -9,15 +9,32 @@ const SecondaryContainer = () => {
 
   const popularMovies = useSelector((store) => store.movies?.popularMovies);
 
-  const topRatedMovies = useSelector((store) => store.movies?.topRatedMovies);
+  const popularTVSeries = useSelector(
+    (store) => store.tvSeries?.popularTVSeries
+  );
 
   return (
     nowPlatingMovies && (
-      <div className="bg-black pl-10">
-        <div className="-mt-64 relative z-30 overflow-hidden">
-          <MovieList title={"Now Playing"} movies={nowPlatingMovies} />
-          <MovieList title={"Popular"} movies={popularMovies} />
-          <MovieList title={"Top Rated"} movies={topRatedMovies} />
+      <div className=" bg-black md:pl-12">
+        <div className="ml-3 mt-0 md:-mt-52 relative z-20 overflow-hidden text-white">
+          <MovieList
+            title={"Now Playing"}
+            movies={nowPlatingMovies}
+            cssClass="flex"
+            type="movie"
+          />
+          <MovieList
+            title={"Popular Movies"}
+            movies={popularMovies}
+            cssClass="flex"
+            type="movie"
+          />
+          <MovieList
+            title={"Popular TV Series"}
+            movies={popularTVSeries}
+            cssClass="flex"
+            type="tv series"
+          />
         </div>
 
         {/* <p>ERROOOORRR</p> */}

@@ -36,7 +36,6 @@ const Login = () => {
           })
             .then((newUser) => {
               // Profile updated!
-              // console.log(newUser);
               // navigate("/browse");
             })
             .catch((error) => {
@@ -62,7 +61,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
 
-          // console.log(user);
           // navigate("/browse");
         })
         .catch((error) => {
@@ -78,9 +76,9 @@ const Login = () => {
     setIsSignInForm((sf) => !sf);
   };
   return (
-    <div className="sm:absolute sm:right-0 sm:left-0  my-36 mx-auto p-4 sm:max-w-[450px] sm:mb-[50px] ">
+    <div className="absolute right-0 left-0 my-36 mx-auto p-4 sm:max-w-[450px] sm:mb-[50px] ">
       <div
-        className=" p-4 box-border  bg-opacity-80 rounded bg-gray-950 flex flex-col m-0 sm:w-fulls
+        className=" p-4 bg-opacity-80 rounded bg-gray-950 flex flex-col m-0 sm:w-full
      sm:px-[68px] sm:py-[48px] sm:min-h-[707]"
       >
         <header className="m-4">

@@ -16,14 +16,16 @@ const Layout = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         //user is signed In
-        // console.log("inside onauthStateChange if condition", user);
+
         const { uid, email, displayName } = user;
+        // localStorage.setItem("userData", JSON.stringify({ userId: uid }));
         dispatch(addUser({ uid, email, displayName }));
         navigate("/browse");
       } else {
         // User is signed out
-        // console.log("inside onauthStateChange else condition", user);
+
         dispatch(removeUser());
+        // localStorage.removeItem("userData");
         navigate("/");
       }
     });
@@ -32,16 +34,11 @@ const Layout = () => {
     };
   }, []);
 
-  // console.log("inside layout render");
   return (
-    <main className="text-white bg-black ">
-      {/* <div className="w-full sm:absolute"> */}
+    <main className="text-white ">
+      <BgImg />
       <Navbar />
-      {/* </div> */}
-      {/* <BgImg /> */}
-      <div className=" ">
-        <Outlet />
-      </div>
+      <Outlet />
     </main>
   );
 };
