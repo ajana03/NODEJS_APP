@@ -89,14 +89,14 @@ const GPTSearchBar = () => {
   // };
 
   return (
-    <div className="pl-6 pt-8 ml-6 mb-8">
+    <div className="pl-1 sm:pl-4 pt-8 ml-6 mb-8">
       {error && <Error errorMsg={error} />}
 
       <form
         className="flex flex-wrap md:justify-center md:items-center w-full"
         onSubmit={handleSearchSubmit}
       >
-        <div className="my-4 mx-4 md:my-0">
+        <div className="my-4 mx-2 md:my-0">
           <label htmlFor="api_key" />
           <input
             ref={gptApiKey}
@@ -105,20 +105,20 @@ const GPTSearchBar = () => {
             id="api_key"
             placeholder={lang[selectedLang].placeholderApiKeyTxt}
             required
-            className="text-white text-lg font-semibold border rounded-md w-[380px] py-2 px-2 md:py-4 md:px-4 md:m-4 bg-transparent border-white hover:ring-offset-2 hover:ring-2 hover:cursor-pointer"
+            className="text-white text-lg font-semibold border rounded-md w-[300px] sm:w-[380px] py-2 px-2 md:py-4 md:px-4 md:m-4 bg-transparent border-white hover:ring-offset-2 hover:ring-2 hover:cursor-pointer"
           />
         </div>
-        <div className="mx-4 my-2 sm:my-0 ">
+        <div className="mx-2 my-2 sm:my-0 ">
           <label htmlFor="search" />
           <input
             ref={searchInput}
             type="text"
             id="search"
             placeholder={lang[selectedLang].placeholderSrchTxt}
-            className="text-white text-lg font-semibold border rounded-md w-[450px] px-2 py-2  md:py-4 md:px-3 md:m-4 bg-transparent border-white hover:ring-offset-2 hover:ring-2 hover:cursor-pointer"
+            className="text-white text-lg font-semibold border rounded-md w-[300px] sm:w-[450px] px-2 py-2  md:py-4 md:px-3 md:m-4 bg-transparent border-white hover:ring-offset-2 hover:ring-2 hover:cursor-pointer"
           />
         </div>
-        <div className="mx-4 my-1.5 sm:my-0">
+        <div className="mx-2 my-1.5 sm:my-0">
           <button
             className="p-2 md:p-3 hover:border hover:rounded-md hover:ring-offset-2 hover:ring-2 border-white"
             // onClick={handleSearchClick}
