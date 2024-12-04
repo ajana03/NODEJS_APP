@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import MovieList from "./MovieList";
 
 import { removeRecommendedMovies } from "../store/gptSlice";
+import Spinner from "./Spinner";
 
 const GPTMovieSuggetions = () => {
   const dispatch = useDispatch();

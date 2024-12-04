@@ -142,9 +142,7 @@ const Login = () => {
         </form>
 
         <div className="m-4">
-          <Link href="/" onClick={() => console.log("Clickked")}>
-            Forgot password?
-          </Link>
+          <Link href="/">Forgot password?</Link>
         </div>
         <div className="m-4">
           <p className="text-gray-300">

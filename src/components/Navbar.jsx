@@ -57,7 +57,7 @@ const Navbar = () => {
   return (
     <header>
       {/* <BgImg /> */}
-      <header className="flex justify-around sm:justify-between items-center pl-2 pr-10 py-5 w-full absolute sm:px-11 sm:py-4 ">
+      <header className="flex justify-around sm:justify-between items-center pl-2 pr-10 py-5 w-full absolute sm:px-8 sm:py-4 ">
         <div className="">
           <a href="/" className="">
             <img className="w-44" src={LOGO} alt="Logo_netflix" />

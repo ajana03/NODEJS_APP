@@ -6,7 +6,7 @@ const VideoTitle = ({ title, overview, movieId }) => {
 
   return (
     <div className=" pt-0 absolute top-[10%] sm:pt-6 sm:pl-12 sm:top-24 sm:right-0 sm:bg-gradient-to-r sm:from-black sm:w-screen sm:aspect-video ">
-      <div className="sm:transition lg:w-1/2 xl:w-3/12 sm:delay-100 sm:hover:scale-110 cursor-pointer ">
+      <div className="md:transition lg:w-1/2 xl:w-3/12 md:delay-100 md:hover:scale-110 cursor-pointer ">
         <h1 className="text-xl sm:text-2xl lg:text-4xl font-bold m-4 text-white">
           {title}
         </h1>

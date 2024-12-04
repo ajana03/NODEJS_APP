@@ -5,6 +5,7 @@ const configSlice = createSlice({
   initialState: {
     lang: "en",
     error: null,
+    isLoading: null,
   },
   reducers: {
     changeLang: (state, action) => {
@@ -16,8 +17,12 @@ const configSlice = createSlice({
     removeError: (state) => {
       state.error = null;
     },
+    changeIsLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
   },
 });
 
-export const { changeLang, changeError, removeError } = configSlice.actions;
+export const { changeLang, changeError, removeError, changeIsLoading } =
+  configSlice.actions;
 export default configSlice.reducer;
