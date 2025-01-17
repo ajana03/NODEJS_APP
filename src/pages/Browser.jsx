@@ -1,20 +1,25 @@
-import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import { useSelector } from "react-redux";
 
 import Error from "../components/Error";
 
 import MainContainer from "../components/MainContainer";
 import SecondaryContainer from "../components/SecondaryContainer";
-import usePopularMovies from "../hooks/usePopularMovies";
-import usePopularTVSeries from "../hooks/usePopularTVSeries";
+
 import GPTSearch from "./GPTSearch";
+import Spinner from "../components/Spinner";
+import useDataFetch from "../hooks/useDataFetch";
 
 const Browser = () => {
   const toggle = useSelector((store) => store.gpt.toggle);
+  const nowPlayingMovies = useSelector(
+    (store) => store.movies.nowPlayingMovies
+  );
 
-  useNowPlayingMovies();
-  usePopularMovies();
-  usePopularTVSeries();
+  console.log("Browser");
+
+  useDataFetch();
+
+  if (!nowPlayingMovies) return <Spinner />;
 
   return (
     <div className="z-10">

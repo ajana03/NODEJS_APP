@@ -17,7 +17,6 @@ const MainContainer = () => {
   const len = filterBgMovie?.length;
   const random = (arrLen) => Math.floor(Math.random() * arrLen);
   const bgMovie = filterBgMovie[random(len)];
-
   const { id, title, overview } = bgMovie;
 
   return (

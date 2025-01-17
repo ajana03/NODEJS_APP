@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import useMovieInfo from "../hooks/useMovieInfo";
+import { memo } from "react";
 
-const VideoTitle = ({ title, overview, movieId }) => {
+const VideoTitle = memo(({ title, overview, movieId }) => {
   const imdbId = useMovieInfo(movieId);
 
   return (
@@ -31,6 +32,6 @@ const VideoTitle = ({ title, overview, movieId }) => {
       </div>
     </div>
   );
-};
+});
 
 export default VideoTitle;

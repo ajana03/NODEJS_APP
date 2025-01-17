@@ -34,7 +34,7 @@ const TrailerPopUp = ({ id, setIsTrailerOpen, type, title }) => {
         referrerPolicy="strict-origin-when-cross-origin"
       ></iframe>
       {!trailer && (
-        <span className="absolute top-[50%] left-[40%] text-[50px] font-bold cursor-pointer text-white">
+        <span className="absolute top-[55%] md:top-[400px] xl:top-[50%] left-[40%] text-[10px] sm:text-[20px] md:text-[30px] xl:text-[50px] font-bold cursor-pointer text-white">
           No Video to show
         </span>
       )}
@@ -46,16 +46,18 @@ const TrailerPopUp = ({ id, setIsTrailerOpen, type, title }) => {
         >
           ▶️Play
         </Link>
-        <Link
-          to={"https://www.imdb.com/title/" + imdbId}
-          target="_blank"
-          className="flex justify-center bg-gray-500/50 hover:bg-gray-600/50  text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          <span className="mt-0.5">
-            <CiCircleInfo color="white" size={20} />
-          </span>
-          <span className="ml-2">Info</span>
-        </Link>
+        {type === "movie" && (
+          <Link
+            to={"https://www.imdb.com/title/" + imdbId}
+            target="_blank"
+            className="flex justify-center bg-gray-500/50 hover:bg-gray-600/50  text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            <span className="mt-0.5">
+              <CiCircleInfo color="white" size={20} />
+            </span>
+            <span className="ml-2">Info</span>
+          </Link>
+        )}
       </div>
     </div>
   );

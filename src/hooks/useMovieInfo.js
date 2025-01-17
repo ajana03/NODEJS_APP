@@ -6,10 +6,14 @@ const useMovieInfo = (movieId) => {
   const URL = "https://api.themoviedb.org/3/movie/" + movieId;
 
   const getMovieInfo = async () => {
-    const data = await fetch(URL, API_OPTIONS);
-    const json = await data.json();
-    const { imdb_id } = json;
-    setImdbId(imdb_id);
+    try {
+      const data = await fetch(URL, API_OPTIONS);
+      const json = await data.json();
+      const { imdb_id } = json;
+      setImdbId(imdb_id);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
