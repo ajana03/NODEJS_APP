@@ -3,7 +3,7 @@ import useMovieInfo from "../hooks/useMovieInfo";
 import { memo } from "react";
 
 const VideoTitle = memo(({ title, overview, movieId }) => {
-  const imdbId = useMovieInfo(movieId);
+  const { imdbId, infoError } = useMovieInfo(movieId);
 
   return (
     <div className=" pt-0 absolute top-[10%] sm:pt-6 sm:pl-12 sm:top-24 sm:right-0 sm:bg-gradient-to-r sm:from-black sm:w-screen sm:aspect-video ">
@@ -27,7 +27,7 @@ const VideoTitle = memo(({ title, overview, movieId }) => {
           target="_blank"
           className="bg-gray-500/50 hover:bg-gray-600/50  text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline"
         >
-          More Info
+          {!infoError ? "More Info" : infoError}
         </Link>
       </div>
     </div>
