@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addtrailer } from "../store/tvSlice";
+import { changeError } from "../store/configSlice";
 
 const useTrailer = (id, type) => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const useTrailer = (id, type) => {
       dispatch(addtrailer(trailervid));
       // setTrailerId(key);
     } catch (err) {
-      console.log(err);
+      dispatch(changeError("Something went wrong with trailer!"));
     }
   };
 

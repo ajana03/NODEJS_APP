@@ -31,7 +31,7 @@ const useDataFetch = () => {
       dispatch(addPopularMovies(filterRes[1]));
       dispatch(addPopularTVSeries(filterRes[2]));
     } catch (err) {
-      dispatch(changeError(err));
+      dispatch(changeError("Something Went Wrong! Please try again."));
     }
   };
   useEffect(() => {

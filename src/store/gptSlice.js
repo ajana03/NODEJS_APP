@@ -5,6 +5,7 @@ const gptSlice = createSlice({
   initialState: {
     toggle: false,
     gptResultMovies: null,
+    isGptError: null,
   },
   reducers: {
     toggleGptSearchView: (state) => {
@@ -16,6 +17,9 @@ const gptSlice = createSlice({
     removeRecommendedMovies: (state) => {
       state.gptResultMovies = null;
     },
+    changeGptError(state, action) {
+      state.isGptError = action.payload;
+    },
   },
 });
 
@@ -23,5 +27,6 @@ export const {
   toggleGptSearchView,
   addRecommendateMovies,
   removeRecommendedMovies,
+  changeGptError,
 } = gptSlice.actions;
 export default gptSlice.reducer;

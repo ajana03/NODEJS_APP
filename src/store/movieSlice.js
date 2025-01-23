@@ -7,6 +7,7 @@ const movieSlice = createSlice({
     trailerVideo: null,
     popularMovies: null,
     topRatedMovies: null,
+    isMovieTraiilerError: null,
     // imdbMovieId:null,
   },
   reducers: {
@@ -22,6 +23,9 @@ const movieSlice = createSlice({
     addTopRatedMovies: (state, action) => {
       state.topRatedMovies = action.payload;
     },
+    changeMovieTrailerError(state, action) {
+      state.isMovieTraiilerError = action.payload;
+    },
   },
 });
 
@@ -30,5 +34,6 @@ export const {
   addTrailerVideo,
   addPopularMovies,
   addTopRatedMovies,
+  changeMovieTrailerError,
 } = movieSlice.actions;
 export default movieSlice.reducer;

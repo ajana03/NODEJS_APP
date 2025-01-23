@@ -7,7 +7,7 @@ import { CiCircleInfo } from "react-icons/ci";
 
 const TrailerPopUp = ({ id, setIsTrailerOpen, type, title }) => {
   useTrailer(id, type);
-  const imdbId = useMovieInfo(id);
+  const { imdbId, infoError } = useMovieInfo(id);
 
   const trailer = useSelector((store) => store.tvSeries?.trailer);
 
@@ -55,7 +55,7 @@ const TrailerPopUp = ({ id, setIsTrailerOpen, type, title }) => {
             <span className="mt-0.5">
               <CiCircleInfo color="white" size={20} />
             </span>
-            <span className="ml-2">Info</span>
+            <span className="ml-2">{!infoError ? "Info" : infoError}</span>
           </Link>
         )}
       </div>

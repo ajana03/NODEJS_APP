@@ -6,7 +6,7 @@ import genAI from "../utils/gemini";
 import { useSelector, useDispatch } from "react-redux";
 import { useRef } from "react";
 import { API_OPTIONS } from "../utils/constants";
-import { addRecommendateMovies } from "../store/gptSlice";
+import { addRecommendateMovies, changeGptError } from "../store/gptSlice";
 
 import { changeError, changeIsLoading } from "../store/configSlice";
 
@@ -20,12 +20,17 @@ const GPTSearchBar = () => {
   const error = useSelector((store) => store.config.error);
 
   const fetchTMDBMovieResults = async (movieName) => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${movieName}&include_adult=true&page=1`,
-      API_OPTIONS
-    );
-    const json = await res.json();
-    return json;
+    try {
+      const res = await fetch(
+        // `https://api.themoviedb.org/3/search/movie?query=${movieName}&include_adult=true&page=1`,
+        `https://api.themoviedb.org/3/search/multi?query=${movieName}&include_adult=false&language=en-US&page=1`,
+        API_OPTIONS
+      );
+      const json = await res.json();
+      return json;
+    } catch (err) {
+      throw err;
+    }
   };
 
   const handleSearchSubmit = async (evt) => {
@@ -41,16 +46,17 @@ const GPTSearchBar = () => {
       const result = await model.generateContent(query);
 
       const reccomdtnResult = result.response.text().split(",");
+
       const data = reccomdtnResult.map((mv) => fetchTMDBMovieResults(mv));
 
       const tmdbResults = await Promise.allSettled(data);
       const filterdRes = tmdbResults.map((mv) => mv.value?.results[0]);
 
       dispatch(addRecommendateMovies(filterdRes));
-      dispatch(changeIsLoading(false));
     } catch (err) {
-      console.log(err);
-      dispatch(changeError("Gemini Error! Please Try cometimes after"));
+      dispatch(changeError("Gemini Error! Please Try sometimes after"));
+    } finally {
+      dispatch(changeIsLoading(false));
     }
   };
 

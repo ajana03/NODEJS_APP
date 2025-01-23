@@ -3,6 +3,7 @@ import { API_OPTIONS } from "../utils/constants";
 
 const useMovieInfo = (movieId) => {
   const [imdbId, setImdbId] = useState(null);
+  const [infoError, setInfoError] = useState(null);
   const URL = "https://api.themoviedb.org/3/movie/" + movieId;
 
   const getMovieInfo = async () => {
@@ -12,7 +13,7 @@ const useMovieInfo = (movieId) => {
       const { imdb_id } = json;
       setImdbId(imdb_id);
     } catch (err) {
-      console.log(err);
+      setInfoError("Can not fetch the movie information");
     }
   };
 
@@ -20,7 +21,7 @@ const useMovieInfo = (movieId) => {
     getMovieInfo();
   }, []);
 
-  return imdbId;
+  return { imdbId, infoError };
 };
 
 export default useMovieInfo;

@@ -15,8 +15,6 @@ const Browser = () => {
     (store) => store.movies.nowPlayingMovies
   );
 
-  console.log("Browser");
-
   useDataFetch();
 
   if (!nowPlayingMovies) return <Spinner />;

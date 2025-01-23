@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
 import { useDispatch } from "react-redux";
-import { addTrailerVideo } from "../store/movieSlice";
+import { addTrailerVideo, changeMovieTrailerError } from "../store/movieSlice";
 
 const useMovieTrailer = (movieId) => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const useMovieTrailer = (movieId) => {
       dispatch(addTrailerVideo(trailer));
       // setTrailerId(key);
     } catch (err) {
-      console.log(err);
+      dispatch(changeMovieTrailerError("Trailer can't be fetched"));
     }
   };
 

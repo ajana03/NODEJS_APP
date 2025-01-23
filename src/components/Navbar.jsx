@@ -9,6 +9,8 @@ import { auth } from "../utils/firebase";
 import { LOGO, USER_ICON } from "../utils/constants";
 import { IoMdArrowDropdown } from "react-icons/io";
 
+import PURPY_LOGO from "../assets/purpy-1.png";
+
 import BgImg from "./BgImg";
 import { SUPPORTED_LANGUAGE_OPT } from "../utils/constants";
 
@@ -60,7 +62,8 @@ const Navbar = () => {
       <header className="flex justify-around sm:justify-between items-center pl-2 pr-10 py-5 w-full absolute sm:px-8 sm:py-4 ">
         <div className="">
           <a href="/" className="">
-            <img className="w-44" src={LOGO} alt="Logo_netflix" />
+            {/* <img className="w-44" src={LOGO} alt="Logo_netflix" /> */}
+            <img className="w-44" src={PURPY_LOGO} alt="Logo_purpyFlix" />
           </a>
         </div>
         <div className="">
